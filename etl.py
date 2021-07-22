@@ -14,7 +14,6 @@ def insert_tables(cur, conn):
         cur.execute(query)
         conn.commit()
 
-
 def main():
     config = configparser.ConfigParser()
     config.read('dwh.cfg')
