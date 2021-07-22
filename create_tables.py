@@ -10,7 +10,6 @@ def drop_tables(cur, conn):
 
 
 """ Here we create the tables if they dont exist """
-
 def create_tables(cur, conn):
     for query in create_table_queries:
         cur.execute(query)
@@ -19,7 +18,6 @@ def create_tables(cur, conn):
 
 """ Here we parse the config file values and connect to the AWS redshift custer \
     as well executing the functions above """
-    
 def main():
     config = configparser.ConfigParser()
     config.read('dwh.cfg')
@@ -30,7 +28,7 @@ def main():
         cur = conn.cursor()
     except e:
         print(e)
-        
+
     drop_tables(cur, conn)
     create_tables(cur, conn)
 
