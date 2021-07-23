@@ -2,23 +2,27 @@ import configparser
 import psycopg2
 from sql_queries import create_table_queries, drop_table_queries
 
-""" Here we drop the tables if they exist """
 def drop_tables(cur, conn):
+    """ Here we drop the tables if they exist """
+
     for query in drop_table_queries:
         cur.execute(query)
         conn.commit()
 
 
-""" Here we create the tables if they dont exist """
 def create_tables(cur, conn):
+    """ Here we create the tables if they dont exist """
+
     for query in create_table_queries:
         cur.execute(query)
         conn.commit()
 
 
-""" Here we parse the config file values and connect to the AWS redshift custer \
-    as well executing the functions above """
+
 def main():
+    """ Here we parse the config file values and connect to the AWS redshift custer \
+    as well executing the functions above """
+
     config = configparser.ConfigParser()
     config.read('dwh.cfg')
 
